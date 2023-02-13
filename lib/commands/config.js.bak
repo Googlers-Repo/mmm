@@ -1,0 +1,43 @@
+const fs = require("fs");
+const path = require("path");
+const { rcFile } = require('rc-config-loader');
+const { SystemProperties } = require("android");
+
+const pkg = JSON.parse(fs.readFileSync(path.resolve(__dirname, "./../../package.json"), "utf8"));
+
+const rootfs = SystemProperties.get("persist.mkshrc.rootfs", "/data/mkuser")
+const configPath = `${rootfs}/etc/mmmrc`
+//const conf = ini.parse(fs.readFileSync(configPath, 'utf-8'))
+
+function loadRcFile(rcFileName){
+    try {
+        const results = rcFile(rcFileName);
+        // Not Found
+        if (!results) {
+            return {};
+        }
+        return results.config;
+    } catch (error) {
+        // Found it, but it is parsing error
+        return {} ; // default value
+    }
+}
+
+/*
+async function config() {
+switch (opt) {
+    case value:
+        
+        break;
+
+    default:
+        break;
+}
+}
+*/
+
+const config = loadRcFile("your-application");
+console.log(config);
+
+
+module.exports = { rootfs, configPath }

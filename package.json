@@ -1,0 +1,24 @@
+{
+  "name": "mmm",
+  "version": "1.0.0",
+  "description": "Install Magisk modules without any app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node lib/mmm.js"
+  },
+  "keywords": [],
+  "author": "Der_Googler",
+  "license": "MIT",
+  "dependencies": {
+    "adm-zip": "^0.5.10",
+    "commander": "^10.0.0",
+    "configstore": "^6.0.0",
+    "follow-redirects": "^1.15.2",
+    "ini": "^3.0.1",
+    "node-fetch": "^3.3.0",
+    "progress": "^2.0.3",
+    "rc-config-loader": "^4.1.2",
+    "shelljs": "^0.8.5",
+    "yesno": "^0.4.0"
+  }
+}
